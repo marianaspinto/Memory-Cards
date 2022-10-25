@@ -26,10 +26,6 @@ const cardsData = [
     question: "What is a variable?",
     answer: "Container for a piece of data",
   },
-  {
-    question: "Exemple of Case Sensitive Variable",
-    answer: "thisIsVariable",
-  },
 ];
 
 // Create all cards
@@ -77,3 +73,33 @@ function updateCurrentText() {
 }
 
 createCards();
+
+// Event Listeners
+
+nextBtn.addEventListener("click", () => {
+  cardsEl[currentActiveCard].className = "card left";
+
+  currentActiveCard = currentActiveCard + 1;
+
+  if (currentActiveCard > cardsEl.length - 1) {
+    currentActiveCard = cardsEl.length - 1;
+  }
+
+  cardsEl[currentActiveCard].className = "card active";
+
+  updateCurrentText();
+});
+
+prevBtn.addEventListener("click", () => {
+  cardsEl[currentActiveCard].className = "card right";
+
+  currentActiveCard = currentActiveCard - 1;
+
+  if (currentActiveCard < 0) {
+    currentActiveCard = 0;
+  }
+
+  cardsEl[currentActiveCard].className = "card active";
+
+  updateCurrentText();
+});
